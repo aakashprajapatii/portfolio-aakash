@@ -1271,6 +1271,32 @@
         display: none
       }
     }
+    .menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media(max-width:900px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #080e1c;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
   </style>
   </head>
 
@@ -1281,6 +1307,7 @@
 
     <nav>
       <a href="#" class="nav-logo">AAKASH PRAJAPATI</a>
+      <div class="menu-toggle">☰</div>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -1969,6 +1996,20 @@
 
     const secs = document.querySelectorAll('section[id]'), navAs = document.querySelectorAll('.nav-links a');
     window.addEventListener('scroll', () => { let cur = ''; secs.forEach(s => { if (window.scrollY >= s.offsetTop - 200) cur = s.id }); navAs.forEach(a => { a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--accent)' : 'var(--muted)' }) });
+    
+    const toggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('.nav-links');
+
+toggle.addEventListener('click', () => {
+  nav.classList.toggle('active');
+});
+
+// link click → menu close
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    nav.classList.remove('active');
+  });
+});
   </script>
   </body>
 
