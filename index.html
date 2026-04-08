@@ -1964,7 +1964,7 @@
     const barObs = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) { const w = parseFloat(e.target.dataset.w); e.target.style.transform = `scaleX(${w})`; barObs.unobserve(e.target) } }) }, { threshold: 0.3 });
     document.querySelectorAll('.skill-bar-fill').forEach(b => barObs.observe(b));
 
-    const ctrObs = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) { const t = +e.target.dataset.target; let c = 0; const step = t / 28; const tmr = setInterval(() => { c = Math.min(c + step, t); e.target.textContent = Math.floor(c); if (c >= t) clearInterval(tmr) }, 45); ctrObs.unobserve(e.target) } }) }, { threshold: 0.5 });
+    const ctrObs = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) { const t = +e.target.dataset.target; let c = 0; const step = t / 28; const tmr = setInterval(() => { c = Math.min(c + step, t); e.target.textContent = t % 1 !== 0 ? c.toFixed(1) : Math.floor(c); if (c >= t) clearInterval(tmr) }, 45); ctrObs.unobserve(e.target) } }) }, { threshold: 0.5 });
     document.querySelectorAll('.ctr').forEach(c => ctrObs.observe(c));
 
     const secs = document.querySelectorAll('section[id]'), navAs = document.querySelectorAll('.nav-links a');
