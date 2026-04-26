@@ -46,7 +46,7 @@
     }
 
     #cursor {
-      position: fixed;
+      /* position: fixed;
       width: 10px;
       height: 10px;
       background: var(--accent);
@@ -54,11 +54,20 @@
       pointer-events: none;
       z-index: 9999;
       transform: translate(-50%, -50%);
-      mix-blend-mode: difference
+      mix-blend-mode: difference */
+      width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  will-change: transform;
     }
 
     #cursor-ring {
-      position: fixed;
+      /* position: fixed;
       width: 36px;
       height: 36px;
       border: 1px solid rgba(0, 229, 160, 0.5);
@@ -66,8 +75,37 @@
       pointer-events: none;
       z-index: 9998;
       transform: translate(-50%, -50%);
-      transition: all 0.12s ease
+      transition: all 0.12s ease */
+       width: 35px;
+  height: 35px;
+  border: 2px solid white;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  will-change: transform;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.15s ease;
+  pointer-events: none;
     }
+
+  .cursor-trail {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: fadeOut 0.5s linear forwards;
+  z-index: 9997;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+}
 
     #bg-canvas {
       position: fixed;
@@ -1306,7 +1344,7 @@
     <canvas id="bg-canvas"></canvas>
 
     <nav>
-      <a href="#" class="nav-logo">Aakash Prajapati PRAJAPATI</a>
+      <a href="#" class="nav-logo">Aakash Prajapati</a>
       <div class="menu-toggle">☰</div>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
@@ -1334,7 +1372,7 @@
           <p class="hero-desc">A data-driven SEO strategist and digital marketer
             based in Gurugram, India. With hands-on
             experience across real estate, travel, insurance &amp; discussion
-            platforms — I help brands rank higher, get
+            platforms -I help brands rank higher, get
             discovered, and grow organically.</p>
           <div class="typed-wrap">$ <span id="typed-text"></span></div>
           <div class="hero-cta">
@@ -1349,7 +1387,7 @@
             <div class="photo-frame">
               <div class="photo-placeholder">
                 <span class="initials">A</span>
-                <span class="ph-label">Aakash Prajapati PRAJAPATI</span>
+                <span class="ph-label">Aakash Prajapati </span>
               </div>
             </div>
           </div>
@@ -1416,7 +1454,7 @@
           <div class="about-text reveal-left">
             <!-- <div class="section-tag">Who I Am</div> -->
             <h2 class="section-title">ABOUT <span>ME</span></h2>
-            <p>Hi, I'm <strong>Aakash Prajapati Prajapati</strong> — a passionate Digital Marketing
+            <p>Hi, I'm <strong>Aakash Prajapati </strong> — a passionate Digital Marketing
               professional and SEO Specialist from
               Gurugram, Haryana. Currently working at <strong>Giggle and Bytes
                 Pvt. Ltd.</strong> and pursuing my
@@ -1559,7 +1597,7 @@
             <div class="skill-name">MS Excel &amp; Google Sheets</div>
             <div class="skill-level">Proficient — 100%</div>
             <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-w="1.00" style="transform: scaleX(1);"></div>
+              <div class="skill-bar-fill" data-w="1.00" style="transform: scaleX(1);"f></div>
             </div>
           </div>
           <div class="skill-card reveal">
@@ -1948,15 +1986,131 @@
     </footer>
 
     <script>
-    const cursor = document.getElementById('cursor'), ring = document.getElementById('cursor-ring');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px' });
-    (function animRing() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animRing) })();
-    document.querySelectorAll('a,button,.skill-card,.edu-card,.cert-card,.stat-box,.tool-pill').forEach(el => {
-      el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%,-50%) scale(2.5)'; ring.style.transform = 'translate(-50%,-50%) scale(0.5)' });
-      el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)'; ring.style.transform = 'translate(-50%,-50%) scale(1)' });
-    });
+    // const cursor = document.getElementById('cursor'), ring = document.getElementById('cursor-ring');
+    // let mx = 0, my = 0, rx = 0, ry = 0;
+    // document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px' });
+    // (function animRing() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animRing) })();
+    // document.querySelectorAll('a,button,.skill-card,.edu-card,.cert-card,.stat-box,.tool-pill').forEach(el => {
+    //   el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%,-50%) scale(2.5)'; ring.style.transform = 'translate(-50%,-50%) scale(0.5)' });
+    //   el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)'; ring.style.transform = 'translate(-50%,-50%) scale(1)' });
+    // });
+    const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
 
+let mx = 0, my = 0;
+let rx = 0, ry = 0;
+let idleTimer;
+
+const speed = 0.22;
+
+// ---- SHOW / HIDE ----
+function showCursor() {
+  cursor.style.opacity = '1';
+  ring.style.opacity = '1';
+
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(() => {
+    cursor.style.opacity = '0';
+    ring.style.opacity = '0';
+  }, 3000);
+}
+
+// ---- MOUSE MOVE ----
+document.addEventListener('mousemove', (e) => {
+  mx = e.clientX;
+  my = e.clientY;
+
+  showCursor();
+
+  cursor.style.transform =
+    `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`;
+});
+
+// ---- SMOOTH FOLLOW ----
+function animate() {
+  rx += (mx - rx) * speed;
+  ry += (my - ry) * speed;
+
+  ring.style.transform =
+    `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
+
+  requestAnimationFrame(animate);
+}
+animate();
+
+// =====================
+// 🔊 SOUND + 📳 HAPTIC
+// =====================
+const AudioCtx = window.AudioContext || window.webkitAudioContext;
+const audioCtx = new AudioCtx();
+
+function clickSound() {
+  const o = audioCtx.createOscillator();
+  const g = audioCtx.createGain();
+
+  o.frequency.setValueAtTime(200, audioCtx.currentTime);
+  o.frequency.exponentialRampToValueAtTime(60, audioCtx.currentTime + 0.08);
+
+  g.gain.setValueAtTime(0.25, audioCtx.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+
+  o.connect(g);
+  g.connect(audioCtx.destination);
+  o.start();
+  o.stop(audioCtx.currentTime + 0.08);
+}
+
+function hoverSound() {
+  const o = audioCtx.createOscillator();
+  const g = audioCtx.createGain();
+
+  o.frequency.setValueAtTime(800, audioCtx.currentTime);
+
+  g.gain.setValueAtTime(0.08, audioCtx.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+
+  o.connect(g);
+  g.connect(audioCtx.destination);
+  o.start();
+  o.stop(audioCtx.currentTime + 0.05);
+}
+
+function vibrate(v) {
+  if (navigator.vibrate) navigator.vibrate(v);
+}
+
+// unlock audio
+document.addEventListener('click', () => {
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+}, { once: true });
+
+// ---- CLICK ----
+document.addEventListener('click', () => {
+  clickSound();
+  vibrate([10,20,10]);
+
+  cursor.style.transform += ' scale(0.8)';
+  setTimeout(() => {
+    cursor.style.transform =
+      cursor.style.transform.replace(' scale(0.8)', '');
+  }, 120);
+});
+
+// ---- HOVER ----
+document.querySelectorAll('a,button,.card,.tool-pill').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    hoverSound();
+    vibrate(5);
+
+    ring.style.transform += ' scale(0.7)';
+  });
+
+  el.addEventListener('mouseleave', () => {
+    ring.style.transform =
+      ring.style.transform.replace(' scale(0.7)', '');
+  });
+});
+//---------------------------------------------------------------------------------
     const canvas = document.getElementById('bg-canvas'), ctx = canvas.getContext('2d');
     function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight }
     resizeCanvas(); window.addEventListener('resize', resizeCanvas);
